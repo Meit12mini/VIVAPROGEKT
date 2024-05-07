@@ -155,7 +155,7 @@ async function getResponseindex2(url, selector, selector_weba) {
                   class="product-${web}__user-container__user-review__user-info__container__star"
                 >` +
       [...Array(item.rating).keys()]
-        .map(() => `<img id="star" src="/icons/star.svg"/>`)
+        .map(() => `<img id="star" src="./icons/star.svg"/>`)
         .join("") +
       `</div>
       </div>
@@ -166,13 +166,13 @@ async function getResponseindex2(url, selector, selector_weba) {
                 <div
                   class="product-${web}__user-container__user-review__grade__like"
                 >
-                  <img src="/icons/like.svg" />
+                  <img src="./icons/like.svg" />
                   <span id="like">${item.likes}</span>
                 </div>
                 <div
                   class="product-${web}__user-container__user-review__grade__dislike"
                 >
-                  <img src="/icons/dislike.svg" />
+                  <img src="./icons/dislike.svg" />
                   <span id="dislike">${item.dislikes}</span>
                 </div> </div> </div> </div>
 `;
