@@ -115,7 +115,13 @@
   font-family: "Gilroy";
   font-size: 18px;
 }
+.product__price__regular-price {
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 22px;
 
+  height: 20px;
+}
 .product__price__regular-price .new-price {
   color: rgb(49, 157, 49);
 }
@@ -184,7 +190,7 @@
 }
 
 #price {
-background-color: azure;
+  background-color: azure;
 }
 
 @media screen and (max-width: 900px) {

@@ -85,13 +85,7 @@ async function run() {
     "http://localhost:3000/reviews",
     "http://localhost:3000/basket",
   ];
-  const selectors = [
-    ".new",
-    ".rec",
-    ".rew",
-    ".bas",
-    "catalog-container products flex-row",
-  ];
+  const selectors = [".new", ".rec", ".rew", ".bas", ".flex-row"];
   const selector_web = [
     "history",
     "recomendation",
@@ -124,7 +118,7 @@ async function getResponseindex2(url, selector, selector_weba) {
   // Проверяем, есть ли у элемента в свойстве oldPrice. Если есть, присваиваем его значение переменной hasOldPrice, иначе присваиваем undefined.
   // const hasOldPrice = "oldPrice" in item ? item.oldPrice : "";
   let html = "";
-  const list = document.querySelector(selector || selectors[index]);
+  const list = document.querySelector(selector);
   if (!list) {
     return;
   }
@@ -199,7 +193,7 @@ async function getResponseindex3(url, selector, selector_weba) {
   html = "";
   const basketContainer = document.querySelector(".main-container__basket");
   basketContainer.innerHTML = ""; // Clear the previous contents of the basket
-  const list = document.querySelector(selector || selectors[index]);
+  const list = document.querySelector(selector);
   if (!list) {
     return;
   }
@@ -234,28 +228,44 @@ async function getResponseindex4(url, selector, selector_weba) {
   // Проверяем, есть ли у элемента в свойстве oldPrice. Если есть, присваиваем его значение переменной hasOldPrice, иначе присваиваем undefined.
   // const hasOldPrice = "oldPrice" in item ? item.oldPrice : "";
   let html = "";
-  const list = document.querySelector(selector || selectors[index]);
+  const list = document.querySelector(selector);
   if (!list) {
     return;
   }
   catalog.forEach((item) => {
-    html += `<div class="${web} menu">
+    html += `<div class="${web} menu" data-id="${item.id}">
               <img class="${web}-img" src="./icons/nognersi.png" id="" />
               <div class="${web}-info">
                 <div class="${web}__price">
-                  <div class="${web}__price__regular-price new-price">
-                  ${item.price} ₽
-                  </div>
-                  <div class="${web}__price__old-price">3443</div>
+
+        ${
+          "old_price" in item
+            ? `<div
+          class="${web}__price__regular-price new-price"
+          id=""
+        >
+          ${item.price} ₽
+        </div>`
+            : `<div
+          class="${web}__price__regular-price"
+          id=""
+        >
+          ${item.price} ₽
+        </div>`
+        }
+        <div
+        class="${web}__price__old-price"
+        id="">${(hasOldPrice =
+          "old_price" in item ? `${item.old_price} ₽` : "")} </div>
                 </div>
-                <div class="${web}__name">Ножницы обычные</div>
+                <div class="${web}__name">${item.title}</div>
                 <div class="${web}__star">
                   <img class="${web}__star__img" src="icons/star.svg" />
                   <span>5.0</span>
                 </div>
               </div>
               <button class="${web}__button">Купить</button>
-            </div>;`;
+            </div>`;
   });
   list.innerHTML += html;
 }
@@ -289,3 +299,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // // Use the updateDatabase function to update the database
 // updateDatabase(["product1", "product2"]);
+document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("click", (event) => {
+    // Если клик не произошел на свайп-слайде, то возвращаемся.
+    if (!event.target.closest(".menu")) return;
+    // Ищем элемент
+    const productElement = event.target.closest(".menu");
+    // Получаем id продукта
+    const productId = productElement.dataset.id;
+    // Перенаправляем на страницу продукта
+    window.location.href = `index2.html?id=${productId}`;
+  });
+});

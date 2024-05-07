@@ -104,6 +104,7 @@
 }
 
 .product-old-price {
+  margin-left: 10px;
   color: rgb(186, 186, 186);
   font-family: "Gilroy";
   font-size: 30px !important;

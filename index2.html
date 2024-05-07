@@ -89,16 +89,19 @@
             <div
               class="product-info__product-container__ordering-group__product-card"
             >
-              <div
-                class="product-info__product-container__ordering-group__product-price"
-              >
-                699 Р
+              <div style="display: flex; align-items: first baseline">
+                <div
+                  class="product-info__product-container__ordering-group__product-price"
+                >
+                  699 Р
+                </div>
+
+                <div
+                  class="product-info__product-container__ordering-group__product-price product-old-price"
+                >
+                  699 Р
+                </div>
               </div>
-              <!-- <div
-                class="product-info__product-container__ordering-group__product-price product-old-price"
-              >
-                699 Р
-              </div> -->
               <div
                 class="product-info__product-container__ordering-group__reviews"
               >
@@ -471,6 +474,26 @@
             titleElement.textContent = `${product.title}`;
           } else {
             console.error("Element with selector 'h1' not found");
+          }
+          const oldElement = document.querySelector(".product-old-price");
+          if (oldElement) {
+            oldElement.textContent = product.hasOwnProperty("old_price")
+              ? `${product.old_price} ₽`
+              : "";
+          } else {
+            console.error(
+              "Element with selector '.product-old-price' not found"
+            );
+          }
+          const Symm = document.querySelector(
+            ".product-info__product-container__ordering-group__product-price"
+          );
+          if (Symm) {
+            Symm.textContent = `${product.price} ₽`;
+          } else {
+            console.error(
+              "Element with selector '.product-info__product-container__ordering-group__product-price"
+            );
           }
 
           const characteristicsElements = document.querySelectorAll(
