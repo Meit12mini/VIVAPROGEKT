@@ -85,12 +85,19 @@ async function run() {
     "http://localhost:3000/reviews",
     "http://localhost:3000/basket",
   ];
-  const selectors = [".new", ".rec", ".rew", ".bas"];
+  const selectors = [
+    ".new",
+    ".rec",
+    ".rew",
+    ".bas",
+    "catalog-container products flex-row",
+  ];
   const selector_web = [
     "history",
     "recomendation",
     "reviews",
     "main-container__basket",
+    "product",
   ];
 
   await getResponse(urls[0], selectors[0], selector_web[0]);
@@ -103,6 +110,11 @@ async function run() {
   const isIndexPaget = location.pathname === "/index3.html";
   if (isIndexPaget) {
     await getResponseindex3(urls[3], selectors[3], selector_web[3]);
+  }
+  const isIndexcatal = location.pathname === "/index5.html";
+  if (isIndexcatal) {
+    await getResponseindex4(urls[0], selectors[4], selector_web[4]);
+    await getResponseindex4(urls[1], selectors[4], selector_web[4]);
   }
 }
 async function getResponseindex2(url, selector, selector_weba) {
@@ -215,6 +227,39 @@ async function getResponseindex3(url, selector, selector_weba) {
   });
   list.innerHTML += html;
 }
+async function getResponseindex4(url, selector, selector_weba) {
+  const response = await fetch(url);
+  const catalog = await response.json();
+  const web = selector_weba;
+  // Проверяем, есть ли у элемента в свойстве oldPrice. Если есть, присваиваем его значение переменной hasOldPrice, иначе присваиваем undefined.
+  // const hasOldPrice = "oldPrice" in item ? item.oldPrice : "";
+  let html = "";
+  const list = document.querySelector(selector || selectors[index]);
+  if (!list) {
+    return;
+  }
+  catalog.forEach((item) => {
+    html += `<div class="${web} menu">
+              <img class="${web}-img" src="./icons/nognersi.png" id="" />
+              <div class="${web}-info">
+                <div class="${web}__price">
+                  <div class="${web}__price__regular-price new-price">
+                  ${item.price} ₽
+                  </div>
+                  <div class="${web}__price__old-price">3443</div>
+                </div>
+                <div class="${web}__name">Ножницы обычные</div>
+                <div class="${web}__star">
+                  <img class="${web}__star__img" src="icons/star.svg" />
+                  <span>5.0</span>
+                </div>
+              </div>
+              <button class="${web}__button">Купить</button>
+            </div>;`;
+  });
+  list.innerHTML += html;
+}
+
 run();
 
 // getResponse();
