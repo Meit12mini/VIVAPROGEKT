@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Агрогном</title>
+    <!-- <script src="/path/to/script.js"></script> -->
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="header-container__group">
+          <img src="/icons/logo.png" class="header-container__logo" />
+          <button class="header-container__catalog">Каталог</button>
+        </div>
+
+        <input
+          class="header-container__search"
+          type="text"
+          id="search-input"
+          placeholder="Найти..."
+        />
+
+        <div class="header-container__buttons">
+          <div class="header-container__buttons__bas-us">
+            <img src="/icons/Karzina_menu.svg" />
+            <a сlass="header-container__buttons__basket__text block">Карзина</a>
+          </div>
+          <div
+            class="header-container__buttons__bas-us"
+            onclick="document.getElementById('auth-modal').style.display='block'"
+          >
+            <img src="/icons/user_menu.svg" />
+            <a сlass="header-container__buttons__basket__text block">Войти</a>
+          </div>
+          <div
+            id="auth-modal"
+            class="modal"
+            style="
+              position: fixed;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              display: none;
+              z-index: 1000;
+            "
+          >
+            <div
+              class="modal-content"
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                padding: 1rem;
+              "
+            >
+              <form
+                id="auth-form"
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: flex-start;
+                  font-family: 'Gilroy';
+                  font-size: 26px;
+                "
+              >
+                <div
+                  style="
+                    display: flex;
+                    justify-content: center;
+                    width: 30vw;
+                    margin-bottom: 50px;
+                    font-size: 30px;
+                  "
+                >
+                  <div>Авторизация</div>
+                </div>
+                <label for="login">Логин</label>
+                <input
+                  type="text"
+                  id="login"
+                  name="login"
+                  required
+                  style="
+                    margin-bottom: 0.5rem;
+                    font-family: 'Gilroy';
+                    border-radius: 6px;
+                    height: 25px;
+                    width: 200px;
+                  "
+                />
+                <label for="password" style="margin-top: 20px">Пароль</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  required
+                  style="
+                    margin-bottom: 0.5rem;
+                    font-family: 'Gilroy';
+                    border-radius: 6px;
+                    height: 25px;
+                    width: 200px;
+                  "
+                />
+                <p style="margin: 0px !important; color: green">
+                  Зарегестрироваться
+                </p>
+                <button
+                  type="submit"
+                  style="
+                    margin-top: 0.5rem;
+                    width: 200px;
+                    height: 40px;
+                    border-radius: 40px;
+                    font-family: Gilroy;
+                    font-size: 26px;
+                    color: #f8f8f8;
+                    transform: translate(0px, 40px);
+                    background: rgb(49, 157, 49);
+                  "
+                >
+                  Войти
+                </button>
+              </form>
+              <span
+                class="close"
+                onclick="document.getElementById('auth-modal').style.display='none'"
+                style="
+                  position: absolute;
+                  top: 0.5rem;
+                  right: 1rem;
+                  font-size: 40px;
+                "
+                >&times;</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div
+      class="modal"
+      id="catalog-modal"
+      style="
+        position: fixed;
+        top: 120px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+        display: none;
+      "
+    >
+      <div class="modal-background">
+        <div class="modal-body">
+          <style>
+            .catalog-wrapper {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 20px;
+            }
+            .catalog-category-title {
+              font-size: 22px;
+              font-weight: 600;
+              margin-bottom: 15px;
+              font-weight: 300;
+              font-family: "Gilroy";
+            }
+            .catalog-category-title a {
+              list-style: none;
+              text-decoration: none;
+              color: #000;
+            }
+            .catalog-cards-wrapper {
+              justify-content: space-between;
+              width: 80vw;
+              flex-wrap: wrap;
+            }
+            .catalog-category-items {
+              width: 300px;
+              display: flex;
+              flex-direction: column;
+              gap: 15px;
+              font-family: "Gilroy";
+            }
+            .catalog-category-item {
+              display: flex;
+              align-items: center;
+            }
+            .catalog-category-item a {
+              text-decoration: none;
+              color: #333;
+              padding: 10px;
+              border: 1px solid #ccc;
+              border-radius: 5px;
+              transition: all 0.3s ease;
+            }
+            .catalog-category-item a:hover {
+              background-color: #f8f8f8;
+            }
+            @media screen and (max-width: 1500px) {
+              .modal-background {
+                width: 84vw;
+              }
+              .catalog-category-title {
+                cursor: pointer;
+                transition: all 0.3s ease;
+              }
+              .catalog-category-items {
+                opacity: 0;
+                display: none;
+                transition: opacity 0.3s ease, transform 0.3s ease;
+                transform: translateY(-5px);
+              }
+              .catalog-category-title.active + .catalog-category-items {
+                display: flex;
+                opacity: 1;
+                transition-delay: 0.1s;
+              }
+              .catalog-category-title.active + .catalog-category-items {
+                transition-duration: 0.5s;
+              }
+              .catalog-category-title.active + .catalog-category-items {
+                transform: translateY(0);
+              }
+            }
+          </style>
+
+          <div class="catalog-wrapper">
+            <div class="catalog-cards-wrapper" style="display: flex">
+              <div class="catalog-category">
+                <div class="catalog-category-title">
+                  <a>Растения</a>
+                </div>
+                <div class="catalog-category-items">
+                  <div class="catalog-category-item">
+                    <a href="/catalog/plants.html#colorful-indoor-plants">
+                      Цветущие комнатные растения
+                    </a>
+                  </div>
+                  <div class="catalog-category-item">
+                    <a href="/catalog/plants.html#succulents"> Суккулены</a>
+                  </div>
+                  <div class="catalog-category-item">
+                    <a href="/catalog/plants.html#ground-cover">
+                      Газоны и трава</a
+                    >
+                  </div>
+                  <div class="catalog-category-item">
+                    <a href="/catalog/plants.html#flowers-seeds">
+                      Овощные семена</a
+                    >
+                  </div>
+                  <div class="catalog-category-item">
+                    <a href="/catalog/plants.html#flowers-seeds">
+                      Цветочные сеmana</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="catalog-category">
+                <div class="catalog-category-title">
+                  <a>Садовые инструменты</a>
+                </div>
+                <div class="catalog-category-items">
+                  <div class="catalog-category-item">
+                    <a href="/catalog/garden-tools.html#shovels-tines">
+                      Лопаты и грабли</a
+                    >
+                  </div>
+                  <div class="catalog-category-item">
+                    <a href="/catalog/garden-tools.html#pruning-knives">
+                      Секаторы и ножницы</a
+                    >
+                  </div>
+                  <div class="catalog-category-item">
+                    <a href="/catalog/garden-tools.html#hoes">
+                      Шланги и насадки</a
+                    >
+                  </div>
+                  <div class="catalog-category-item">
+                    <a href="/catalog/garden-tools.html#hanging-baskets">
+                      Поливочные системы</a
+                    >
+                  </div>
+                  <div class="catalog-category-item">
+                    <a href="/catalog/garden-tools.html#gardening-gloves">
+                      Садовые перчаты</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="catalog-category">
+                <div class="catalog-category-title">
+                  <a>Декор</a>
+                </div>
+                <div class="catalog-category-items">
+                  <div class="catalog-category-item">
+                    <a href="/catalog/decor.html#clay-animals">
+                      Фигуры животных из керамики</a
+                    >
+                  </div>
+                  <div class="catalog-category-item">
+                    <a href="/catalog/decor.html#garden-statues">
+                      Садовые статуи</a
+                    >
+                  </div>
+                  <div class="catalog-category-item">
+                    <a href="/catalog/decor.html#vases"> Вазон и горки</a>
+                  </div>
+                  <div class="catalog-category-item">
+                    <a href="/catalog/decor.html#scales-trays">
+                      Скалды и лавки</a
+                    >
+                  </div>
+                  <div class="catalog-category-item">
+                    <a href="/catalog/decor.html#solar-lanterns-candelabra">
+                      Солнечные фонари и фонарики</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="catalog-category">
+                <div class="catalog-category-title">
+                  <a>Удобрения</a>
+                </div>
+                <div class="catalog-category-items">
+                  <div class="catalog-category-item">
+                    <a href="/catalog/fertilizers.html#universal-fertilizer">
+                      Универсальные удобрения</a
+                    >
+                  </div>
+                  <div class="catalog-category-item">
+                    <a href="/catalog/fertilizers.html#flowers-fertilizer">
+                      Удобрения для цветущих растений</a
+                    >
+                  </div>
+                  <div class="catalog-category-item">
+                    <a href="/catalog/fertilizers.html#vegetable-fertilizer">
+                      Удобрения для овощ</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <main>
+      <div class="wrapper">
+        <div class="event">
+          <img class="event-img" src="/icons/Event.png" />
+        </div>
+        <div class="welcome margin-standart">
+          <div class="text-container">
+            <h1>Добро пожаловать в "Агрогном"</h1>
+            <p class="text-container__welcom-info">
+              Ваш надежный садовый магазин! Мы предлагаем широкий ассортимент
+              качественных товаров для сада и огорода, а также профессиональные
+              консультации. Приходите к нам за всем необходимым для создания
+              вашего идеального зеленого уголка!
+            </p>
+          </div>
+          <img class="welcome-img" src="/icons/Welcom to.png" />
+        </div>
+        <div class="product-recomendation margin-standart">
+          <h1>Рекомендации</h1>
+          <div class="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper rec">
+              <!-- Slides -->
+              <div class="swiper-slide">
+                <div
+                  class="product-recomendation__product product product-menu"
+                >
+                  <img
+                    class="product-recomendation__product__product-img product__img"
+                    src="/icons/nognersi.png"
+                    id=""
+                  />
+                  <div class="product-recomendation__product__product-info">
+                    <div
+                      class="product-recomendation__product__product-info__price product__info__price"
+                      id=""
+                    >
+                      699 ₽
+                    </div>
+                    <div
+                      class="product-recomendation__product__product-info__name product__info__name"
+                      id=""
+                    >
+                      Ножницы обычные
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div
+                  class="product-recomendation__product product product-menu"
+                >
+                  <img
+                    class="product-recomendation__product__product-img product__img"
+                    src="/icons/nognersi.png"
+                    id=""
+                  />
+                  <div class="product-recomendation__product__product-info">
+                    <div
+                      class="product-recomendation__product__product-info__price product__info__price"
+                      id=""
+                    >
+                      699 ₽
+                    </div>
+                    <div
+                      class="product-recomendation__product__product-info__name product__info__name"
+                      id=""
+                    >
+                      Ножницы обычные
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div
+                  class="product-recomendation__product product product-menu"
+                >
+                  <img
+                    class="product-recomendation__product__product-img product__img"
+                    src="/icons/nognersi.png"
+                    id=""
+                  />
+                  <div class="product-recomendation__product__product-info">
+                    <div
+                      class="product-recomendation__product__product-info__price product__info__price"
+                      id=""
+                    >
+                      699 ₽
+                    </div>
+                    <div
+                      class="product-recomendation__product__product-info__name product__info__name"
+                      id=""
+                    >
+                      Ножницы обычные
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div
+                  class="product-recomendation__product product product-menu"
+                >
+                  <img
+                    class="product-recomendation__product__product-img product__img"
+                    src="/icons/nognersi.png"
+                    id=""
+                  />
+                  <div
+                    class="product-recomendation__product__prproduct-promotion__product__product-info"
+                  >
+                    <div
+                      class="product-recomendation__product__product-info__price product__info__price"
+                      id=""
+                    >
+                      699 ₽
+                    </div>
+                    <div
+                      class="product-recomendation__product__product-info__name product__info__name"
+                      id=""
+                    >
+                      Ножницы обычные
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div
+                  class="product-recomendation__product product product-menu"
+                >
+                  <img
+                    class="product-recomendation__product__product-img product__img"
+                    src="/icons/nognersi.png"
+                    id=""
+                  />
+                  <div
+                    class="product-recomendation__product__prproduct-promotion__product__product-info"
+                  >
+                    <div
+                      class="product-recomendation__product__product-info__price product__info__price"
+                      id=""
+                    >
+                      699 ₽
+                    </div>
+                    <div
+                      class="product-recomendation__product__product-info__name product__info__name"
+                      id=""
+                    >
+                      Ножницы обычные
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div
+                  class="product-recomendation__product product product-menu"
+                >
+                  <img
+                    class="product-recomendation__product__product-img product__img"
+                    src="/icons/nognersi.png"
+                    id=""
+                  />
+                  <div
+                    class="product-recomendation__product__prproduct-promotion__product__product-info"
+                  >
+                    <div
+                      class="product-recomendation__product__product-info__price product__info__price"
+                      id=""
+                    >
+                      699 ₽
+                    </div>
+                    <div
+                      class="product-recomendation__product__product-info__name product__info__name"
+                      id=""
+                    >
+                      Ножницы обычные
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div
+                  class="product-recomendation__product product product-menu"
+                >
+                  <img
+                    class="product-recomendation__product__product-img product__img"
+                    src="/icons/nognersi.png"
+                    id=""
+                  />
+                  <div class="product-recomendation__product__product-info">
+                    <div
+                      class="product-recomendation__product__product-info__price product__info__price"
+                      id=""
+                    >
+                      699 ₽
+                    </div>
+                    <div
+                      class="product-recomendation__product__product-info__name product__info__name"
+                      id=""
+                    >
+                      Ножницы обычные
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+        <div class="product-promotion margin-standart">
+          <h1>Акции</h1>
+          <div class="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper sal">
+              <!-- Slides -->
+              <div class="swiper-slide">
+                <div class="product-promotion__product product product-menu">
+                  <img
+                    class="product-promotion__product__product-img product__img"
+                    src="/icons/nognersi.png"
+                    id=""
+                  />
+                  <div class="product-promotion__product__product-info">
+                    <div
+                      class="product-promotion__product__product-info__price product__info"
+                    >
+                      <div
+                        class="product-promotion__product__product-info__price__new-price product__info new-price"
+                        id=""
+                      >
+                        699 ₽
+                      </div>
+                      <div
+                        class="product-promotion__product__product-info__price__old-price product__info old-price"
+                        id=""
+                      >
+                        699 ₽
+                      </div>
+                    </div>
+                    <div
+                      class="product-promotion__product__product-info__name product__info__name"
+                      id=""
+                    >
+                      Ножницы обычные
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-promotion__product product product-menu">
+                  <img
+                    class="product-promotion__product__product-img product__img"
+                    src="/icons/nognersi.png"
+                    id=""
+                  />
+                  <div class="product-promotion__product__product-info">
+                    <div
+                      class="product-promotion__product__product-info__price product__info"
+                    >
+                      <div
+                        class="product-promotion__product__product-info__price__new-price product__info new-price"
+                        id=""
+                      >
+                        699 ₽
+                      </div>
+                      <div
+                        class="product-promotion__product__product-info__price__old-price product__info old-price"
+                        id=""
+                      >
+                        699 ₽
+                      </div>
+                    </div>
+                    <div
+                      class="product-promotion__product__product-info__name product__info__name"
+                      id=""
+                    >
+                      Ножницы обычные
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-promotion__product product product-menu">
+                  <img
+                    class="product-promotion__product__product-img product__img"
+                    src="/icons/nognersi.png"
+                    id=""
+                  />
+                  <div class="product-promotion__product__product-info">
+                    <div
+                      class="product-promotion__product__product-info__price product__info"
+                    >
+                      <div
+                        class="product-promotion__product__product-info__price__new-price product__info new-price"
+                        id=""
+                      >
+                        699 ₽
+                      </div>
+                      <div
+                        class="product-promotion__product__product-info__price__old-price product__info old-price"
+                        id=""
+                      >
+                        699 ₽
+                      </div>
+                    </div>
+                    <div
+                      class="product-promotion__product__product-info__name product__info__name"
+                      id=""
+                    >
+                      Ножницы обычные
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-promotion__product product product-menu">
+                  <img
+                    class="product-promotion__product__product-img product__img"
+                    src="/icons/nognersi.png"
+                    id=""
+                  />
+                  <div class="product-promotion__product__product-info">
+                    <div
+                      class="product-promotion__product__product-info__price product__info"
+                    >
+                      <div
+                        class="product-promotion__product__product-info__price__new-price product__info new-price"
+                        id=""
+                      >
+                        699 ₽
+                      </div>
+                      <div
+                        class="product-promotion__product__product-info__price__old-price product__info old-price"
+                        id=""
+                      >
+                        699 ₽
+                      </div>
+                    </div>
+                    <div
+                      class="product-promotion__product__product-info__name product__info__name"
+                      id=""
+                    >
+                      Ножницы обычные
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-promotion__product product product-menu">
+                  <img
+                    class="product-promotion__product__product-img product__img"
+                    src="/icons/nognersi.png"
+                    id=""
+                  />
+                  <div class="product-promotion__product__product-info">
+                    <div
+                      class="product-promotion__product__product-info__price product__info"
+                    >
+                      <div
+                        class="product-promotion__product__product-info__price__new-price product__info new-price"
+                        id=""
+                      >
+                        699 ₽
+                      </div>
+                      <div
+                        class="product-promotion__product__product-info__price__old-price product__info old-price"
+                        id=""
+                      >
+                        699 ₽
+                      </div>
+                    </div>
+                    <div
+                      class="product-promotion__product__product-info__name product__info__name"
+                      id=""
+                    >
+                      Ножницы обычные
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-promotion__product product product-menu">
+                  <img
+                    class="product-promotion__product__product-img product__img"
+                    src="/icons/nognersi.png"
+                    id=""
+                  />
+                  <div class="product-promotion__product__product-info">
+                    <div
+                      class="product-promotion__product__product-info__price product__info"
+                    >
+                      <div
+                        class="product-promotion__product__product-info__price__new-price product__info new-price"
+                        id=""
+                      >
+                        699 ₽
+                      </div>
+                      <div
+                        class="product-promotion__product__product-info__price__old-price product__info old-price"
+                        id=""
+                      >
+                        699 ₽
+                      </div>
+                    </div>
+                    <div
+                      class="product-promotion__product__product-info__name product__info__name"
+                      id=""
+                    >
+                      Ножницы обычные
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+        <div class="reviews margin-standart">
+          <h1>Отзывы</h1>
+          <div class="swiper swiper-reviews">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+              <div class="swiper-slide">
+                <div class="reviews-container">
+                  <div class="reviews-container__top-info">
+                    <div id="" class="reviews-container__top-info__user-logo">
+                      <img
+                        id=""
+                        class="reviews-container__top-info__user-logo__img"
+                        src="/icons/noname.png"
+                      />
+                    </div>
+                    <div class="reviews-container__top-info__colum-info">
+                      <div
+                        class="reviews-container__top-info__colum-info__user-name"
+                        id=""
+                      >
+                        Гость
+                      </div>
+                      <div
+                        class="reviews-container__top-info__colum-info__user-star"
+                        id=""
+                      >
+                        <img src="/icons/star.svg" />
+                        <img src="/icons/star.svg" />
+                        <img src="/icons/star.svg" />
+                        <img src="/icons/star.svg" />
+                        <img src="/icons/star.svg" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="reviews-container__user-text" id="">
+                    Отличный магазин для садоводов! Широкий ассортимент
+                    качественных товаров по доступным ценам. Профессиональный и
+                    дружелюбный персонал, всегда готовый помочь... Далее
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="reviews-container">
+                  <div class="reviews-container__top-info">
+                    <div id="" class="reviews-container__top-info__user-logo">
+                      <img
+                        id=""
+                        class="reviews-container__top-info__user-logo__img"
+                        src="/icons/noname.png"
+                      />
+                    </div>
+                    <div class="reviews-container__top-info__colum-info">
+                      <div
+                        class="reviews-container__top-info__colum-info__user-name"
+                        id=""
+                      >
+                        Гость
+                      </div>
+                      <div
+                        class="reviews-container__top-info__colum-info__user-star"
+                        id=""
+                      >
+                        <img src="/icons/star.svg" />
+                        <img src="/icons/star.svg" />
+                        <img src="/icons/star.svg" />
+                        <img src="/icons/star.svg" />
+                        <img src="/icons/star.svg" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="reviews-container__user-text" id="">
+                    Отличный магазин для садоводов! Широкий ассортимент
+                    качественных товаров по доступным ценам. Профессиональный и
+                    дружелюбный персонал, всегда готовый помочь... Далее
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="reviews-container">
+                  <div class="reviews-container__top-info">
+                    <div id="" class="reviews-container__top-info__user-logo">
+                      <img
+                        id=""
+                        class="reviews-container__top-info__user-logo__img"
+                        src="/icons/noname.png"
+                      />
+                    </div>
+                    <div class="reviews-container__top-info__colum-info">
+                      <div
+                        class="reviews-container__top-info__colum-info__user-name"
+                        id=""
+                      >
+                        Гость
+                      </div>
+                      <div
+                        class="reviews-container__top-info__colum-info__user-star"
+                        id=""
+                      >
+                        <img src="/icons/star.svg" />
+                        <img src="/icons/star.svg" />
+                        <img src="/icons/star.svg" />
+                        <img src="/icons/star.svg" />
+                        <img src="/icons/star.svg" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="reviews-container__user-text" id="">
+                    Отличный магазин для садоводов! Широкий ассортимент
+                    качественных товаров по доступным ценам. Профессиональный и
+                    дружелюбный персонал, всегда готовый помочь... Далее
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="reviews-container">
+                  <div class="reviews-container__top-info">
+                    <div id="" class="reviews-container__top-info__user-logo">
+                      <img
+                        id=""
+                        class="reviews-container__top-info__user-logo__img"
+                        src="/icons/noname.png"
+                      />
+                    </div>
+                    <div class="reviews-container__top-info__colum-info">
+                      <div
+                        class="reviews-container__top-info__colum-info__user-name"
+                        id=""
+                      >
+                        Гость
+                      </div>
+                      <div
+                        class="reviews-container__top-info__colum-info__user-star"
+                        id=""
+                      >
+                        <img src="/icons/star.svg" />
+                        <img src="/icons/star.svg" />
+                        <img src="/icons/star.svg" />
+                        <img src="/icons/star.svg" />
+                        <img src="/icons/star.svg" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="reviews-container__user-text" id="">
+                    Отличный магазин для садоводов! Широкий ассортимент
+                    качественных товаров по доступным ценам. Профессиональный и
+                    дружелюбный персонал, всегда готовый помочь... Далее
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="reviews-container">
+                  <div class="reviews-container__top-info">
+                    <div id="" class="reviews-container__top-info__user-logo">
+                      <img
+                        id=""
+                        class="reviews-container__top-info__user-logo__img"
+                        src="/icons/noname.png"
+                      />
+                    </div>
+                    <div class="reviews-container__top-info__colum-info">
+                      <div
+                        class="reviews-container__top-info__colum-info__user-name"
+                        id=""
+                      >
+                        Гость
+                      </div>
+                      <div
+                        class="reviews-container__top-info__colum-info__user-star"
+                        id=""
+                      >
+                        <img src="/icons/star.svg" />
+                        <img src="/icons/star.svg" />
+                        <img src="/icons/star.svg" />
+                        <img src="/icons/star.svg" />
+                        <img src="/icons/star.svg" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="reviews-container__user-text" id="">
+                    Отличный магазин для садоводов! Широкий ассортимент
+                    качественных товаров по доступным ценам. Профессиональный и
+                    дружелюбный персонал, всегда готовый помочь... Далее
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- If we need scrollbar -->
+          </div>
+        </div>
+        <div class="newsletter">
+          <div class="newsletter-container margin-standart">
+            <div class="newletter-container__group-form">
+              <h1 class="h1-newsletter">Узнавать о новинках и акциях</h1>
+              <div class="newletter-container__group-form__input">
+                <div class="newletter-container__group-form__input__mail">
+                  <h2
+                    class="newletter-container__group-form__input__mail__title"
+                  >
+                    Почта
+                  </h2>
+                  <input
+                    placeholder="mypost@mail.ru"
+                    class="newletter-container__group-form__input__mail__input"
+                  />
+                </div>
+                <div class="newletter-container__group-form__input__name">
+                  <h2
+                    class="newletter-container__group-form__input__mail__title"
+                  >
+                    Почта
+                  </h2>
+                  <input
+                    placeholder="mypost@mail.ru"
+                    class="newletter-container__group-form__input__mail__input"
+                  />
+                </div>
+              </div>
+              <button class="newletter-container__group-form__button">
+                Отправить
+              </button>
+            </div>
+            <div class="newsletter-container__group-img">
+              <img
+                class="newsletter-container__group-img__img"
+                src="/icons/gardener-with-plant.jpg"
+              />
+            </div>
+          </div>
+          <div class="product-history margin-standart">
+            <h1>История</h1>
+            <div class="swiper">
+              <!-- Additional required wrapper -->
+              <div class="swiper-wrapper new">
+                <!-- Slides -->
+                <div class="swiper-slide">
+                  <div class="product-history__product product product-menu">
+                    <img
+                      class="product-history__product__product-img product__img"
+                      src="/icons/nognersi.png"
+                      id=""
+                    />
+                    <div
+                      class="product-history__product__prproduct-promotion__product__product-info"
+                    >
+                      <div
+                        class="product-history__product__product-info__price product__info__price"
+                        id=""
+                      >
+                        699 ₽
+                      </div>
+                      <div
+                        class="product-history__product__product-info__name product__info__name"
+                        id=""
+                      >
+                        Ножницы обычные
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="product-history__product product product-menu">
+                    <img
+                      class="product-history__product__product-img product__img"
+                      src="/icons/nognersi.png"
+                      id=""
+                    />
+                    <div
+                      class="product-history__product__prproduct-promotion__product__product-info"
+                    >
+                      <div
+                        class="product-history__product__product-info__price product__info__price"
+                        id=""
+                      >
+                        699 ₽
+                      </div>
+                      <div
+                        class="product-history__product__product-info__name product__info__name"
+                        id=""
+                      >
+                        Ножницы обычные
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="product-history__product product product-menu">
+                    <img
+                      class="product-history__product__product-img product__img"
+                      src="/icons/nognersi.png"
+                      id=""
+                    />
+                    <div
+                      class="product-history__product__prproduct-promotion__product__product-info"
+                    >
+                      <div
+                        class="product-history__product__product-info__price product__info"
+                      >
+                        <div
+                          class="product-history__product__product-info__price__new-price product__info new-price"
+                          id=""
+                        >
+                          699 ₽
+                        </div>
+                        <div
+                          class="product-history__product__product-info__price__old-price product__info old-price"
+                          id=""
+                        >
+                          699 ₽
+                        </div>
+                      </div>
+                      <div
+                        class="product-history__product__product-info__name product__info__name"
+                        id=""
+                      >
+                        Ножницы обычные
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="product-history__product product product-menu">
+                    <img
+                      class="product-history__product__product-img product__img"
+                      src="/icons/nognersi.png"
+                      id=""
+                    />
+                    <div
+                      class="product-history__product__prproduct-promotion__product__product-info"
+                    >
+                      <div
+                        class="product-history__product__product-info__price product__info__price"
+                        id=""
+                      >
+                        699 ₽
+                      </div>
+                      <div
+                        class="product-history__product__product-info__name product__info__name"
+                        id=""
+                      >
+                        Ножницы обычные
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="product-histo__product product product-menu">
+                    <img
+                      class="product-histo__product__product-img product__img"
+                      src="/icons/nognersi.png"
+                      id=""
+                    />
+                    <div
+                      class="product-histo__product__prproduct-promotion__product__product-info"
+                    >
+                      <div
+                        class="product-history__product__product-info__price product__info"
+                      >
+                        <div
+                          class="product-history__product__product-info__price__new-price product__info new-price"
+                          id=""
+                        >
+                          699 ₽
+                        </div>
+                        <div
+                          class="product-history__product__product-info__price__old-price product__info old-price"
+                          id=""
+                        >
+                          699 ₽
+                        </div>
+                      </div>
+                      <div
+                        class="product-history__product__product-info__name product__info__name"
+                        id=""
+                      >
+                        Ножницы обычные
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="product-history__product product product-menu">
+                    <img
+                      class="product-history__product__product-img product__img"
+                      src="/icons/nognersi.png"
+                      id=""
+                    />
+                    <div
+                      class="product-history__product__prproduct-promotion__product__product-info"
+                    >
+                      <div
+                        class="product-history__product__product-info__price product__info__price"
+                        id=""
+                      >
+                        699 ₽
+                      </div>
+                      <div
+                        class="product-history__product__product-info__name product__info__name"
+                        id=""
+                      >
+                        Ножницы обычные
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="product-history__product product product-menu">
+                    <img
+                      class="product-history__product__product-img product__img"
+                      src="/icons/nognersi.png"
+                      id=""
+                    />
+                    <div
+                      class="product-history__product__prproduct-promotion__product__product-info"
+                    >
+                      <div
+                        class="product-history__product__product-info__price product__info"
+                      >
+                        <div
+                          class="product-history__product__product-info__price__new-price product__info new-price"
+                          id=""
+                        >
+                          699 ₽
+                        </div>
+                        <div
+                          class="product-history__product__product-info__price__old-price product__info old-price"
+                          id=""
+                        >
+                          699 ₽
+                        </div>
+                      </div>
+                      <div
+                        class="product-history__product__product-info__name product__info__name"
+                        id=""
+                      >
+                        Ножницы обычные
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- If we need pagination -->
+              <div class="swiper-pagination"></div>
+
+              <!-- If we need navigation buttons -->
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+
+              <!-- If we need scrollbar -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+  </body>
+  <script>
+    const catalogCategoryTitles = document.querySelectorAll(
+      ".catalog-category-title"
+    );
+    catalogCategoryTitles.forEach((title) => {
+      title.addEventListener("click", () => {
+        title.classList.toggle("active");
+      });
+    });
+  </script>
+
+  <script src="/swiper-bundle.min.js"></script>
+  <script src="/main.js"></script>
+  <script src="/coding.js"></script>
+</html>

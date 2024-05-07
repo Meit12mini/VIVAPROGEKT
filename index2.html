@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styleto.css" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Агрогном</title>
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="header-container__group">
+          <img src="/icons/logo.png" class="header-container__logo" />
+          <button class="header-container__catalog">Каталог</button>
+        </div>
+        <div class="header-container__search"></div>
+        <div class="header-container__buttons">
+          <div class="header-container__buttons__basket button-header">
+            <img src="/icons/Karzina_menu.svg" />
+            <span сlass="header-container__buttons__basket__text">Карзина</span>
+          </div>
+          <div class="header-container__buttons__user button-header">
+            <img src="/icons/user_menu.svg" />
+            <span сlass="header-container__buttons__basket__text">Войти</span>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <ul class="breadcrumbs margin-standart">
+        <li class="arrow"><a href="#">Назад</a></li>
+        <li><a href="#">Главная страница</a></li>
+        <li><a href="#">Категория</a></li>
+        <li><a href="#">Подкатегория</a></li>
+        <li><a href="#">Товар</a></li>
+      </ul>
+      <div class="product-info margin-standart">
+        <h1>Ножницы обычные</h1>
+        <div class="product-info__product-container">
+          <div class="product-info__product-container__img-group">
+            <div class="product-info__product-container__img-group__mini-img">
+              <img
+                src="/2str/Rectangle 139.png"
+                onmouseover="changeImage(this.src)"
+              />
+              <img
+                src="/2str/smiling-young-male-gardener-uniform-wearing-gardening-hat-with-gloves-holding-clippers-isolated-orange_141793-87261 2.png"
+                onmouseover="changeImage(this.src)"
+              />
+              <img
+                src="/2str/Rectangle 139.png"
+                onmouseover="changeImage(this.src)"
+              />
+            </div>
+            <div class="product-info__product-container__img-group__img-active">
+              <div id="largeImage"></div>
+              <div
+                class="product-info__product-container__img-group__img__swiper"
+              >
+                <div class="slider-container">
+                  <div class="slider">
+                    <img src="/2str/Rectangle 139.png" alt="" />
+                    <img
+                      src="/2str/smiling-young-male-gardener-uniform-wearing-gardening-hat-with-gloves-holding-clippers-isolated-orange_141793-87261 2.png"
+                      alt=""
+                    />
+                    <img src="/2str/Rectangle 139.png" alt="" />
+                  </div>
+                  <button
+                    class="prev-button"
+                    aria-label="Посмотреть предыдущий слайд"
+                  >
+                    &lt;
+                  </button>
+                  <button
+                    class="next-button"
+                    aria-label="Посмотреть следующий слайд"
+                  >
+                    &gt
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="product-info__product-container__ordering-group">
+            <div
+              class="product-info__product-container__ordering-group__product-card"
+            >
+              <div
+                class="product-info__product-container__ordering-group__product-price"
+              >
+                699 Р
+              </div>
+              <!-- <div
+                class="product-info__product-container__ordering-group__product-price product-old-price"
+              >
+                699 Р
+              </div> -->
+              <div
+                class="product-info__product-container__ordering-group__reviews"
+              >
+                <div
+                  class="product-info__product-container__ordering-group__reviews__product-rating"
+                >
+                  <span class="st">
+                    <!-- <img id="star-first" src="/icons/star.svg" /> -->
+                    <!-- <img
+                      id="star"
+                      src="/icons/star.svg" /><img
+                      id="star"
+                      src="/icons/star.svg" /><img
+                      id="star"
+                      src="/icons/star.svg" /><img
+                      id="star"
+                      src="/icons/star.svg"
+                  /> -->
+                  </span>
+                </div>
+                <div
+                  class="product-info__product-container__ordering-group__reviews__product-reviews"
+                >
+                  <span id="reviews">5.0</span>
+                  <span id="reviews" data-id="os">117 отзывов</span>
+                </div>
+              </div>
+              <div
+                id=""
+                class="product-info__product-container__ordering-group__product-availability store"
+              >
+                Есть в наличии в 3 магазинах
+              </div>
+              <div
+                id=""
+                class="product-info__product-container__ordering-group__product-availability dilivery"
+              >
+                Доставка от 5 дней
+              </div>
+              <div
+                class="product-info__product-container__ordering-group__button-group"
+              >
+                <button
+                  class="product-info__product-container__ordering-group__button-group__product-button placing"
+                >
+                  Оформить
+                </button>
+                <button
+                  class="product-info__product-container__ordering-group__button-group__product-button carizna"
+                >
+                  В корзину
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="product-description margin-standart">
+        <h1>Описание</h1>
+        <p class="product-description__text">
+          Ножницы для стрижки кустов - это специализированные инструменты,
+          предназначенные для аккуратной обрезки и формирования кустов. Они
+          обладают острыми лезвиями, которые позволяют точно и равномерно стричь
+          растения, сохраняя их здоровье и внешний вид. Ножницы для стрижки
+          кустов обычно имеют удобную рукоятку и прочную конструкцию, что
+          обеспечивает надежность и долговечность при использовании. Эти
+          инструменты идеально подходят для садоводов, ландшафтных дизайнеров и
+          любителей садоводства, которые хотят поддерживать опрятный вид своей
+          зоны или создавать красивые композиции из растений.
+        </p>
+      </div>
+      <div class="product-characteristics margin-standart">
+        <h1>Характеристики</h1>
+        <div class="product-characteristics__table">
+          <table class="product-characteristics__table-info">
+            <tr>
+              <th></th>
+              <th></th>
+            </tr>
+          </table>
+
+          <table class="product-characteristics__table-info">
+            <tr>
+              <th></th>
+              <th></th>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="product-reviews margin-standart">
+        <h1>Отзывы</h1>
+
+        <div class="product-reviews__photo-container">
+          <div
+            style="
+              display: flex;
+              flex-direction: row;
+              width: 50vw;
+              justify-content: space-between;
+              margin-top: 40px;
+            "
+          >
+            <div class="product-reviews__photo-container__photo">
+              <img
+                class="product-reviews__photo-container__photo__image"
+                src="/2str/56/1 (1).webp"
+                alt=""
+              />
+            </div>
+            <div class="product-reviews__photo-container__photo">
+              <img
+                class="product-reviews__photo-container__photo__image"
+                src="/2str/56/1 (1).webp"
+                alt=""
+              />
+            </div>
+            <div class="product-reviews__photo-container__photo">
+              <img
+                class="product-reviews__photo-container__photo__image"
+                src="/2str/56/1 (1).webp"
+                alt=""
+              />
+            </div>
+            <div class="product-reviews__photo-container__photo last">
+              <img
+                class="product-reviews__photo-container__photo__image"
+                src="/2str/56/1 (1).webp"
+                alt=""
+              />
+            </div>
+            <div
+              class="product-reviews__photo-container__photo"
+              style="position: relative"
+            >
+              <img
+                class="product-reviews__photo-container__photo__image image-blur"
+                src="/2str/56/1 (1).webp"
+                alt=""
+              />
+              <div class="product-reviews__photo-container__photo__plus">
+                <span id="plus">+15</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-reviews__user-container rew">
+          <div class="product-reviews__user-container__user-review">
+            <div class="product-reviews__user-container__user-review__avatar">
+              <img
+                class="product-reviews__user-container__user-review__avatar__image"
+                src="/2str/56/1 (1).webp"
+              />
+            </div>
+            <div
+              class="product-reviews__user-container__user-review__user-info"
+            >
+              <div
+                class="product-reviews__user-container__user-review__user-info__container"
+              >
+                <div
+                  class="product-reviews__user-container__user-review__user-info__container__name-and-date"
+                >
+                  <div
+                    class="product-reviews__user-container__user-review__user-info__container__name-and-date__name"
+                  >
+                    Андрей Забойный
+                  </div>
+                  <div
+                    class="product-reviews__user-container__user-review__user-info__container__name-and-date__date"
+                  >
+                    12.06.23
+                  </div>
+                </div>
+
+                <div
+                  class="product-reviews__user-container__user-review__user-info__container__star"
+                >
+                  <img id="star" src="/icons/star.svg" /><img
+                    id="star"
+                    src="/icons/star.svg"
+                  /><img id="star" src="/icons/star.svg" /><img
+                    id="star"
+                    src="/icons/star.svg"
+                  /><img id="star" src="/icons/star.svg" />
+                </div>
+              </div>
+              <div class="product-reviews__user-container__user-review__text">
+                Крутые ножницы!
+              </div>
+              <div class="product-reviews__user-container__user-review__grade">
+                <div
+                  class="product-reviews__user-container__user-review__grade__like"
+                >
+                  <img src="/icons/like.svg" />
+                  <span id="like">0</span>
+                </div>
+                <div
+                  class="product-reviews__user-container__user-review__grade__dislike"
+                >
+                  <img src="/icons/dislike.svg" />
+                  <span id="dislike">0</span>
+                </div>
+              </div>
+              <!-- Пагинация. 1-й элемент отличается от других, т.к. это первая страница, поэтому она не должна реагировать на клик -->
+              <div
+                class="product-reviews__user-container__user-review__pagination"
+              >
+                <!-- Кнопка "Пред" -->
+                <button
+                  class="product-reviews__user-container__user-review__pagination__button prev"
+                  disabled
+                >
+                  <!-- first page, so disable button -->
+                  &lt;
+                </button>
+                <!-- Номер страницы -->
+                <span
+                  class="product-reviews__user-container__user-review__pagination__page-number active"
+                  >1</span
+                >
+                <!-- active class marks current page -->
+                <!-- Остальные кнопки -->
+                <button
+                  class="product-reviews__user-container__user-review__pagination__button"
+                >
+                  2
+                </button>
+                <button
+                  class="product-reviews__user-container__user-review__pagination__button"
+                >
+                  3
+                </button>
+                <button
+                  class="product-reviews__user-container__user-review__pagination__button"
+                >
+                  4
+                </button>
+                <button
+                  class="product-reviews__user-container__user-review__pagination__button"
+                >
+                  5
+                </button>
+                <!-- Кнопка "След" -->
+                <button
+                  class="product-reviews__user-container__user-review__pagination__button next"
+                >
+                  &gt;
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=""></div>
+    </main>
+    <footer></footer>
+
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get("id");
+      // Загружаем информацию о продукте из db.json
+      fetch("server/db.json")
+        .then((response) => response.json())
+        .then((data) => {
+          const product = data.products.find(
+            (product) => product.id === parseInt(productId)
+          );
+          if (!product) {
+            console.error(`Product with id ${productId} not found`);
+            return;
+          }
+          const producttwo = data.products;
+          // Расчет среднего рейтинга и количества всех отзывов
+          fetch("server/db.json")
+            .then((response) => response.json())
+            .then((data) => {
+              const reviews = data.reviews.filter(
+                (review) => review.productId === parseInt(productId)
+              );
+              let totalRating = 0;
+              let count = 0;
+
+              for (const review of reviews) {
+                totalRating += review.rating;
+                count++;
+              }
+              const averageRating = (totalRating / count).toFixed(1);
+
+              console.log("Средний рейтинг:", averageRating);
+              console.log("Количество отзывов:", count);
+              // Изменение количества звезд в зависимости от оценки
+              const starRating = document.querySelector(
+                ".product-info__product-container__ordering-group__reviews__product-rating"
+              ); // Изменено
+              if (starRating) {
+                const rating = parseFloat(
+                  document.getElementById("reviews").getAttribute("data-id")
+                );
+
+                // Удаляем старые звезды
+                starRating.querySelectorAll("img").forEach((star) => {
+                  star.remove();
+                });
+                console.log(`${averageRating} апап`);
+                // Добавляем новые звезды в зависимости от рейтинга
+                for (let i = 1; i <= averageRating; i++) {
+                  const star = document.createElement("img");
+                  star.src = "/icons/star.svg";
+                  star.classList.add("star");
+                  star.id = `star-${i}`; // Устанавливаем уникальный id для каждой звезды
+                  if (i <= rating) {
+                    star.classList.add("active");
+                  }
+                  starRating.appendChild(star);
+                }
+              }
+
+              // Изменение стандартного значения оценки и количества отзывов
+              console.log("Средний рейтинг:", averageRating);
+              console.log("Количество отзывов:", count);
+              const reviewsElement = document.querySelector(
+                ".product-info__product-container__ordering-group__reviews"
+              );
+              if (reviewsElement) {
+                const averageRatingElement =
+                  reviewsElement.querySelector("#reviews");
+                const countElement = reviewsElement.querySelector(
+                  "#reviews[data-id='os']"
+                );
+                if (averageRatingElement && countElement) {
+                  averageRatingElement.textContent = `${averageRating}`;
+                  const suffix =
+                    count % 10 === 1 && count % 100 !== 11
+                      ? " отзыв"
+                      : count % 10 >= 2 &&
+                        count % 10 <= 4 &&
+                        (count % 100 < 10 || count % 100 >= 20)
+                      ? " отзыва"
+                      : " отзывов";
+                  countElement.textContent = `${count}${suffix}`;
+                }
+              }
+
+              const deliveryElement = document.querySelector(".dilivery");
+              if (deliveryElement) {
+                deliveryElement.textContent = `Доставка от ${product.delivery} дней`;
+              }
+
+              const availabilityElement = document.querySelector(".store");
+              if (availabilityElement) {
+                availabilityElement.textContent = `Есть в наличии в ${product.available} магазинах`;
+              }
+            })
+            .catch((error) => {
+              console.error("Ошибка при получении данных:", error);
+            });
+
+          const descriptionElement = document.querySelector(
+            ".product-description__text"
+          );
+          if (descriptionElement) {
+            descriptionElement.textContent = `${product.description}`;
+          } else {
+            console.error(
+              "Element with selector '.product-description__text' not found"
+            );
+          }
+          const titleElement = document.querySelector("h1");
+          if (titleElement) {
+            titleElement.textContent = `${product.title}`;
+          } else {
+            console.error("Element with selector 'h1' not found");
+          }
+
+          const characteristicsElements = document.querySelectorAll(
+            ".product-characteristics__table-info"
+          );
+          if (characteristicsElements.length === 0) return;
+
+          const characteristicsObj = product.characteristics;
+          const uniqueCharacteristics = {};
+          for (const [key, value] of Object.entries(characteristicsObj)) {
+            uniqueCharacteristics[key] = value;
+          }
+
+          const tables = document.querySelectorAll("table");
+
+          const tableBody1 = tables[0].querySelector("tbody");
+          const tableBody2 = tables[1].querySelector("tbody");
+
+          for (
+            let i = 0;
+            i < Object.entries(uniqueCharacteristics).length;
+            i++
+          ) {
+            const [key, value] = Object.entries(uniqueCharacteristics)[i];
+
+            const row = document.createElement("tr");
+            const keyCell = document.createElement("td");
+            const valueCell = document.createElement("td");
+
+            keyCell.textContent = key;
+            valueCell.textContent = value;
+
+            const targetTableBody = i % 2 === 0 ? tableBody1 : tableBody2;
+
+            row.appendChild(keyCell);
+            row.appendChild(valueCell);
+
+            targetTableBody.appendChild(row);
+          }
+        })
+
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    </script>
+  </body>
+  <script>
+    button.addEventListener("click", async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get("id");
+
+      try {
+        const response = await fetch("http://localhost:3000/products");
+
+        if (response.ok) {
+          const textResponse = await response.text();
+          console.log(textResponse); // Log the textResponse variable
+
+          try {
+            const jsonResponse = JSON.parse(textResponse);
+
+            if (jsonResponse && Array.isArray(jsonResponse.products)) {
+              const product = jsonResponse.products.find(
+                (product) => product.id === productId
+              );
+
+              if (product) {
+                localStorage.setItem(
+                  "selectedProduct",
+                  JSON.stringify(product)
+                );
+              } else {
+                console.error("Товар не найден в базе данных");
+              }
+            } else {
+              console.error("Некорректный формат данных JSON");
+            }
+          } catch (jsonError) {
+            console.error("Ошибка при разборе JSON:", jsonError);
+          }
+        } else {
+          console.error(
+            "Ошибка при получении данных из базы данных:",
+            response.status
+          );
+        }
+      } catch (error) {
+        console.error("Ошибка при выполнении запроса:", error);
+      }
+
+      if (product) {
+        localStorage.setItem("selectedProduct", JSON.stringify(product));
+        console.log("Продукт найден и сохранен в localStorage:", product);
+      } else {
+        console.error("Продукт не найден в базе данных");
+      }
+      localStorage.setItem("selectedProduct", JSON.stringify(product));
+      console.log(
+        "Продукт сохранен в localStorage:",
+        localStorage.getItem("selectedProduct")
+      );
+      const storedProduct = localStorage.getItem("selectedProduct");
+      if (storedProduct) {
+        console.log(
+          "Продукт найден в localStorage:",
+          JSON.parse(storedProduct)
+        );
+      } else {
+        console.log("Продукт не найден в localStorage");
+      }
+    });
+    if (product) {
+      localStorage.setItem("selectedProduct", JSON.stringify(product));
+      console.log("Продукт найден и сохранен в localStorage:", product);
+    } else {
+      console.error("Продукт не найден в базе данных");
+    }
+    localStorage.setItem("selectedProduct", JSON.stringify(product));
+    console.log(
+      "Продукт сохранен в localStorage:",
+      localStorage.getItem("selectedProduct")
+    );
+
+    // document.addEventListener("DOMContentLoaded", (event) => {
+    //   // Add event listener to all elements with class "carizna"
+    //   document.querySelectorAll(".carizna").forEach((button) => {
+    //     button.addEventListener("click", async () => {
+    //       // Get the product ID from the data attribute of the button
+    //       const productId = button.dataset.productId;
+
+    //       // Fetch the current basket from the server
+    //       const response = await fetch("server/db.json");
+    //       const basket = await response.json();
+
+    //       // Add the new product to the basket
+    //       basket.basket.push({ productId: productId });
+
+    //       // Send the updated basket back to the server
+    //       const updatedResponse = await fetch("server/db.json", {
+    //         method: "PUT",
+    //         headers: {
+    //           "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify({ basket: basket.basket }),
+    //       });
+    //       // Refresh the page to show the updated basket
+    //       if (updatedResponse.ok) {
+    //         location.reload();
+    //       } else {
+    //         console.error("Failed to update basket");
+    //       }
+    //     });
+    //   });
+    // });
+  </script>
+  <script>
+    function changeImage(src) {
+      document.getElementById("largeImage").style.backgroundImage =
+        "url(" + src + ")";
+    }
+  </script>
+
+  <script src="/swiper-bundle.min.js"></script>
+  <script src="/main.js"></script>
+  <script src="/coding.js"></script>
+</html>

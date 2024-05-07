@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles__oform.css" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Агрогном</title>
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="header-container__group">
+          <img src="/icons/logo.png" class="header-container__logo" />
+          <button class="header-container__catalog">Каталог</button>
+        </div>
+        <div class="header-container__search"></div>
+        <div class="header-container__buttons">
+          <div class="header-container__buttons__basket button-header">
+            <img src="/icons/Karzina_menu.svg" />
+            <span сlass="header-container__buttons__basket__text">Карзина</span>
+          </div>
+          <div class="header-container__buttons__user button-header">
+            <img src="/icons/user_menu.svg" />
+            <span сlass="header-container__buttons__basket__text">Войти</span>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="catalog-container margin-standart">
+        <div class="catalog-container-filters">
+          <style>
+            #catalog-filter {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 1rem;
+              width: 220px;
+              margin: 2rem auto;
+              height: 0px;
+            }
+
+            #catalog-filter label {
+              margin-right: 1rem;
+            }
+            #catalog-filter input[type="text"] {
+              width: 190px;
+              height: 32px;
+              box-sizing: border-box;
+              border: 1px solid rgb(0, 0, 0);
+              border-radius: 5px;
+              color: rgb(0, 0, 0);
+              font-family: "Gilroy";
+              font-size: 16px;
+            }
+            #catalog-filter select,
+            #catalog-filter input[type="range"],
+            #catalog-filter input[type="color"],
+            #price-second {
+              margin-left: 5px;
+              padding: 0.5rem;
+              border-radius: 0.5rem;
+              border: 1px solid #ddd;
+              width: 150px;
+              color: rgb(0, 0, 0);
+              font-family: "Gilroy";
+              font-size: 18px;
+              font-weight: 300;
+              line-height: 21px;
+            }
+            #catalog-filter input[type="color"] {
+              width: 32px;
+            }
+
+            #catalog-filter input[type="range"] {
+              width: 100%;
+            }
+
+            #catalog-filter datalist {
+              display: none;
+            }
+
+            #catalog-filter datalist option {
+              color: #999;
+              font-size: 0.9rem;
+            }
+
+            #catalog-filter button[type="submit"] {
+              padding: 0.5rem 1rem;
+              background-color: #007bff;
+              color: #fff;
+              border: none;
+              border-radius: 0.5rem;
+              cursor: pointer;
+            }
+            .catalog-container__top-filters {
+              display: flex;
+              align-items: center;
+            }
+            .catalog-container__top-filters__button {
+              display: none;
+              width: auto;
+              height: auto;
+              border-radius: 20px;
+            }
+            #catalog-filter button[type="submit"]:hover {
+              background-color: #0062cc;
+            }
+            @media screen and (max-width: 1000px) {
+              .catalog-container__top-filters p {
+                display: none;
+              }
+              .catalog-container__top-filters__button {
+                display: flex;
+                width: 50px;
+                height: 50px;
+                align-items: center;
+                border-radius: 50px;
+                justify-content: center;
+                margin-right: 20px;
+              }
+              .catalog-container__top-filters__button img {
+                width: 29px;
+                height: 29px;
+              }
+              #catalog-filter {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 0px;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #edf3e1;
+                z-index: 9999;
+                padding: 2rem;
+                margin: 0px;
+              }
+              #catalog-filter input[type="range"] {
+                width: 30%;
+              }
+
+              .catalog__button {
+                width: 30%;
+              }
+              #catalog-filter.open {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+              }
+              #catalog-filter form {
+                background-color: #fff;
+                padding: 2rem;
+                border-radius: 1rem;
+                width: 400px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+              }
+              #catalog-filter.open form {
+                animation: open-filter 0.3s ease-in-out;
+              }
+
+              @keyframes open-filter {
+                0% {
+                  opacity: 0;
+                  transform: scale(0.9);
+                }
+                100% {
+                  opacity: 1;
+                  transform: scale(1);
+                }
+              }
+
+              #catalog-filter form label {
+                display: block;
+                margin-bottom: 0.5rem;
+              }
+
+              #catalog-filter form input,
+              #catalog-filter form select {
+                width: 30%;
+              }
+            }
+          </style>
+
+          <form id="catalog-filter">
+            <label for="category">Категория:</label>
+            <select id="category" name="category">
+              <option value="">Все</option>
+              <option value="seeds">Семена</option>
+              <option value="soil">Подстилки</option>
+              <option value="fertilizers">Удобрения</option>
+              <option value="tools">Инструменты</option>
+              <option value="flowers">Цветы</option>
+            </select>
+            <label for="delivery">Срок доставки:</label>
+            <select id="delivery" name="delivery">
+              <option value="">Все</option>
+              <option value="15days">до 15 дней</option>
+              <option value="30days">до 30 дней</option>
+              <option value="noLimit">не важно</option>
+            </select>
+            <label for="material">Материалы:</label>
+            <input
+              type="text"
+              id="material"
+              name="material"
+              placeholder="Введите материалы"
+            />
+            <label for="producer">Производитель:</label>
+            <input
+              type="text"
+              id="producer"
+              name="producer"
+              placeholder="Введите производителя"
+            />
+            <label for="color">Цвет:</label>
+            <input type="color" id="color" name="color" />
+            <label for="plant">Растение:</label>
+            <input
+              type="text"
+              id="plant"
+              name="plant"
+              placeholder="Введите название растения"
+            />
+            <button
+              class="catalog__button"
+              type="submit"
+              onclick="
+                if(window.innerWidth < 1000) {
+                  document.getElementById('catalog-filter').style.display='none';
+                }"
+            >
+              Применить
+            </button>
+            <label for="price">Цена:</label>
+            <input
+              type="range"
+              id="price"
+              name="price"
+              min="0"
+              max="1000"
+              step="1"
+              style="
+                color: green !important; /* Цвет полосы */
+                background-color: #290e0e; /* Цвет фона */
+                /* Здесь можно задать стили для круговки */
+              "
+              list="price-list"
+            />
+            <datalist id="price-list">
+              <option value="0" label="0"></option>
+              <option value="50" label="50"></option>
+              <option value="100" label="100"></option>
+              <option value="200" label="200"></option>
+              <option value="300" label="300"></option>
+              <option value="400" label="400"></option>
+              <option value="500" label="500"></option>
+              <option value="600" label="600"></option>
+              <option value="700" label="700"></option>
+              <option value="800" label="800"></option>
+              <option value="900" label="900"></option>
+              <option value="1000" label="1000"></option>
+            </datalist>
+          </form>
+        </div>
+        <div>
+          <div class="catalog-container__top-filters">
+            <button class="catalog-container__top-filters__button">
+              <img src="/settings_1077333.png" />
+            </button>
+            <p>Сортировать по цене</p>
+            <select id="price-second" name="prce">
+              <option value="">Популярные</option>
+              <option value="asc">Сначала дешевые</option>
+              <option value="desc">Сначала дорогие</option>
+            </select>
+          </div>
+          <div class="catalog-container products flex-row">
+            <div class="product menu">
+              <img class="product-img" src="/icons/nognersi.png" id="" />
+              <div class="product-info">
+                <div class="product__price">
+                  <div class="product__price__regular-price new-price">
+                    699 ₽
+                  </div>
+                  <div class="product__price__old-price">3443</div>
+                </div>
+                <div class="product__name">Ножницы обычные</div>
+                <div class="product__star">
+                  <img class="product__star__img" src="icons/star.svg" />
+                  <span>5.0</span>
+                </div>
+              </div>
+              <button class="product__button">Купить</button>
+            </div>
+            <div class="product menu">
+              <img class="product-img" src="/icons/nognersi.png" id="" />
+              <div class="product-info">
+                <div class="product__price">
+                  <div class="product__price__regular-price new-price">
+                    699 ₽
+                  </div>
+                  <div class="product__price__old-price">3443</div>
+                </div>
+                <div class="product__name">Ножницы обычные</div>
+                <div class="product__star">
+                  <img class="product__star__img" src="icons/star.svg" />
+                  <span>5.0</span>
+                </div>
+              </div>
+              <button class="product__button">Купить</button>
+            </div>
+            <div class="product menu">
+              <img class="product-img" src="/icons/nognersi.png" id="" />
+              <div class="product-info">
+                <div class="product__price">
+                  <div class="product__price__regular-price new-price">
+                    699 ₽
+                  </div>
+                  <div class="product__price__old-price">3443</div>
+                </div>
+                <div class="product__name">Ножницы обычные</div>
+                <div class="product__star">
+                  <img class="product__star__img" src="icons/star.svg" />
+                  <span>5.0</span>
+                </div>
+              </div>
+              <button class="product__button">Купить</button>
+            </div>
+            <div class="product menu">
+              <img class="product-img" src="/icons/nognersi.png" id="" />
+              <div class="product-info">
+                <div class="product__price">
+                  <div class="product__price__regular-price new-price">
+                    699 ₽
+                  </div>
+                  <div class="product__price__old-price">3443</div>
+                </div>
+                <div class="product__name">Ножницы обычные</div>
+                <div class="product__star">
+                  <img class="product__star__img" src="icons/star.svg" />
+                  <span>5.0</span>
+                </div>
+              </div>
+              <button class="product__button">Купить</button>
+            </div>
+            <div class="product menu">
+              <img class="product-img" src="/icons/nognersi.png" id="" />
+              <div class="product-info">
+                <div class="product__price">
+                  <div class="product__price__regular-price new-price">
+                    699 ₽
+                  </div>
+                  <div class="product__price__old-price">3443</div>
+                </div>
+                <div class="product__name">Ножницы обычные</div>
+                <div class="product__star">
+                  <img class="product__star__img" src="icons/star.svg" />
+                  <span>5.0</span>
+                </div>
+              </div>
+              <button class="product__button">Купить</button>
+            </div>
+          </div>
+        </div>
+        <footer></footer>
+
+        <script src="/swiper-bundle.min.js"></script>
+        <script src="/main.js"></script>
+        <script src="/coding.js"></script>
+        <script>
+          document
+            .querySelector(".catalog-container__top-filters__button")
+            .addEventListener("click", function () {
+              var filter = document.getElementById("catalog-filter");
+              if (filter.style.display === "flex") {
+                filter.style.display = "none";
+              } else {
+                filter.style.display = "flex";
+              }
+            });
+        </script>
+      </div>
+    </main>
+  </body>
+</html>

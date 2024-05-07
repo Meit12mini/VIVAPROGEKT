@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles__oform__faq.css" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Агрогном</title>
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="header-container__group">
+          <img src="/icons/logo.png" class="header-container__logo" />
+          <button class="header-container__catalog">Каталог</button>
+        </div>
+        <div class="header-container__search"></div>
+        <div class="header-container__buttons">
+          <div class="header-container__buttons__basket button-header">
+            <img src="/icons/Karzina_menu.svg" />
+            <span сlass="header-container__buttons__basket__text">Карзина</span>
+          </div>
+          <div class="header-container__buttons__user button-header">
+            <img src="/icons/user_menu.svg" />
+            <span сlass="header-container__buttons__basket__text">Войти</span>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <style>
+        .faq__item__answer {
+          overflow: hidden;
+          max-height: 0;
+          transition: max-height 0.25s ease-out !important;
+        }
+        button:hover {
+          background-color: rgb(239, 239, 239);
+          transition: 0.5s;
+        }
+        .faq__item.open .faq__item__answer {
+          max-height: 100vh;
+          transition: max-height 0.25s ease-in !important;
+        }
+        .faq__item.open .faq__item__question {
+          height: auto;
+        }
+      </style>
+      <section class="faq">
+        <h1>FAQ</h1>
+        <ul class="faq__list">
+          <li class="faq__item">
+            <button class="faq__item__question">
+              Что такое Lorem Ipsum?
+              <div class="faq__item__answer">
+                Lorem Ipsum - это текст-"рыба", используемый в печати и
+                вэб-дизайне. Lorem Ipsum является стандартным примером текста,
+                используемого в индустрии тиколигаф. Этот текст используется в
+                качестве заполнителя на страницах, чтобы избежать пустых страниц
+                и дать образец прочтения и макета. Данный текст успешно пережил
+                без заметных изменений пять веков, но и перешагнул в интернет,
+                где popularized world wide web. Нередален текст размером
+                примерно треи три страницы и постоянно используется в качестве
+                примера текста в наборе по созданию печати и вэб-дизайна. Если
+                веб-дизайнер обнаружит в тексте Lorem Ipsum, то будьте уверены,
+                что он достаточно умный для перестановки слов, чтобы сделать
+                читаемый текст.
+              </div>
+            </button>
+          </li>
+          <li class="faq__item">
+            <button class="faq__item__question">
+              Что такое Lorem Ipsum?
+              <div class="faq__item__answer">
+                Lorem Ipsum - это текст-"рыба", используемый в печати и
+                вэб-дизайне. Lorem Ipsum является стандартным примером текста,
+                используемого в индустрии тиколигаф. Этот текст используется в
+                качестве заполнителя на страницах, чтобы избежать пустых страниц
+                и дать образец прочтения и макета. Данный текст успешно пережил
+                без заметных изменений пять веков, но и перешагнул в интернет,
+                где popularized world wide web. Нередален текст размером
+                примерно треи три страницы и постоянно используется в качестве
+                примера текста в наборе по созданию печати и вэб-дизайна. Если
+                веб-дизайнер обнаружит в тексте Lorem Ipsum, то будьте уверены,
+                что он достаточно умный для перестановки слов, чтобы сделать
+                читаемый текст.
+              </div>
+            </button>
+          </li>
+          <li class="faq__item">
+            <button class="faq__item__question">
+              Что такое Lorem Ipsum?
+              <div class="faq__item__answer">
+                Lorem Ipsum - это текст-"рыба", используемый в печати и
+                вэб-дизайне. Lorem Ipsum является стандартным примером текста,
+                используемого в индустрии тиколигаф. Этот текст используется в
+                качестве заполнителя на страницах, чтобы избежать пустых страниц
+                и дать образец прочтения и макета. Данный текст успешно пережил
+                без заметных изменений пять веков, но и перешагнул в интернет,
+                где popularized world wide web. Нередален текст размером
+                примерно треи три страницы и постоянно используется в качестве
+                примера текста в наборе по созданию печати и вэб-дизайна. Если
+                веб-дизайнер обнаружит в тексте Lorem Ipsum, то будьте уверены,
+                что он достаточно умный для перестановки слов, чтобы сделать
+                читаемый текст.
+              </div>
+            </button>
+          </li>
+        </ul>
+      </section>
+
+      <script>
+        const questions = document.querySelectorAll(".faq__item__question");
+        questions.forEach((question) => {
+          question.addEventListener("click", () => {
+            const parent = question.parentElement;
+            parent.classList.toggle("open");
+          });
+        });
+      </script>
+    </main>
+
+    <footer></footer>
+  </body>
+
+  <script src="/swiper-bundle.min.js"></script>
+  <script src="/main.js"></script>
+  <script src="/coding.js"></script>
+</html>

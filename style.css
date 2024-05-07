@@ -1,0 +1,394 @@
+body {
+  margin: 0px;
+}
+.product-reviews__user-container__user-review__pagination {
+  display: none !important;
+}
+button:hover {
+  background-color: green;
+  transition: 0.4s;
+}
+.product__img {
+  width: 250px;
+  height: 250px;
+}
+button {
+  font: inherit;
+  background-color: transparent;
+}
+/* .swiper-slide {
+  width: auto !important;
+  margin: 0px 10px 0px 10px;
+} */
+.modal-background {
+  padding: 60px;
+  width: 80vw;
+  height: auto;
+  border-radius: 60px;
+
+  background: rgb(237, 243, 225);
+}
+input:focus {
+  outline: greenyellow;
+}
+header {
+  background-color: #bfdb88;
+}
+.modal-content {
+  padding: 60px;
+  width: 30vw;
+  height: 400px;
+  border-radius: 20px;
+
+  background: rgb(237, 243, 225);
+}
+.header-container {
+  height: 80px;
+  padding: 0px;
+  margin-left: clamp(10%, 1%, 0.5%);
+  margin-right: clamp(10%, 1%, 0.5%);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.header-container__group {
+  width: 300px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+.header-container__catalog {
+  height: 45px;
+  width: 150px;
+  margin-left: 25px;
+  border-radius: 27px;
+  background: rgb(49, 157, 49);
+  color: rgb(255, 255, 255);
+  font-family: "Gilroy";
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 28px;
+  letter-spacing: 0%;
+}
+.header-container__search {
+  width: 60vw;
+  height: 45px;
+  box-sizing: border-box;
+  border: 3px solid rgb(49, 157, 49);
+  border-radius: 27px;
+  background: rgba(49, 157, 49, 0);
+  padding: 15px;
+
+  font-family: "Gilroy";
+  font-size: 22px;
+  margin: 0px 100px 0px 100px;
+}
+.header-container__buttons {
+  display: flex;
+}
+.header-container__buttons__bas-us {
+  padding: clamp(20px, 5px, 75px);
+  align-self: center;
+  text-align: center;
+  font-family: "Gilroy";
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 21px;
+  align-self: flex-start;
+}
+/* .button-header {
+  padding: clamp(20px, 5px, 75px);
+  align-self: center;
+  text-align: center;
+  font-family: "Gilroy";
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 21px;
+  align-self: flex-start;
+  display: grid;
+  justify-items: center;
+} */
+.event {
+  display: flex;
+  justify-content: center;
+  margin-top: 5vh;
+}
+.event-img {
+  width: 78%;
+  height: 100%;
+}
+
+h1 {
+  color: rgb(0, 0, 0);
+  font-family: "Gilroy";
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 300;
+  width: 100%;
+}
+p {
+  color: rgb(0, 0, 0);
+  font-family: "Gilroy";
+  font-size: clamp(16px, 3vw, 22px) !important;
+  font-weight: 300;
+  line-height: 130%;
+}
+.margin-standart {
+  margin-left: clamp(140px, 20vw, 210px);
+  margin-right: clamp(140px, 20vw, 210px);
+  margin-top: calc(50px + (100 - 50) * ((100vw - 320px) / (1920 - 320)));
+}
+@media screen and (max-width: 1500px) {
+  .margin-standart {
+    margin-left: clamp(
+      15px,
+      calc((100vw - 320px) * 0.57 - 315px),
+      calc((100vw - 1024px) * 0.03 + 40px)
+    );
+    margin-right: clamp(
+      15px,
+      calc((100vw - 320px) * 0.57 - 315px),
+      calc((100vw - 1024px) * 0.03 + 40px)
+    );
+  }
+  .event-img {
+    width: 92%;
+  }
+}
+.welcome {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.welcome-img {
+  width: 40%;
+}
+.text-container__welcom-info {
+  width: 600px;
+}
+.product__info__price {
+  color: rgb(0, 0, 0);
+  font-family: "Gilroy";
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 32px;
+}
+.product__info__name {
+  color: rgb(0, 0, 0);
+  font-family: "Gilroy";
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 23px;
+}
+.product__info {
+  display: flex;
+  align-items: flex-end;
+}
+
+.new-price {
+  color: rgb(49, 157, 49);
+  font-family: "Gilroy";
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 32px;
+  padding-right: 10px;
+}
+.old-price {
+  color: rgb(186, 186, 186);
+  font-family: "Gilroy";
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 22px;
+  text-decoration-line: line-through;
+  height: 20px;
+}
+.reviews-container__top-info__user-logo__img {
+  border-radius: 50%;
+  width: 43px;
+  height: 43px;
+}
+.reviews-container {
+  padding: 20px;
+  width: 345px;
+  height: 300px;
+  box-sizing: border-box;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 40px;
+  background: rgb(255, 255, 255);
+}
+.reviews-container__top-info {
+  display: flex;
+  color: rgb(0, 0, 0);
+  font-family: "Gilroy";
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 21px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.reviews-container__top-info__user-logo {
+  padding-right: 10px;
+}
+.reviews-container__user-text {
+  font-family: "Gilroy";
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 25px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.newsletter {
+  background: rgb(191, 219, 136);
+
+  height: 350px;
+}
+.newsletter-container {
+  padding: 40px 0px 40px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 81.5vw;
+}
+.h1-newsletter {
+  color: rgb(255, 255, 255);
+  margin: 0px;
+}
+.newletter-container__group-form__input__mail__input {
+  box-sizing: border-box;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 15px;
+  background: rgba(125, 125, 125, 0);
+  color: rgba(255, 255, 255, 0.5);
+  font-family: "Gilroy";
+  font-size: 20px;
+  font-weight: 300;
+  width: 300px;
+  height: 50px;
+  padding-left: 10px;
+}
+.newletter-container__group-form__input {
+  display: flex;
+}
+.newletter-container__group-form__input__mail__title {
+  color: rgb(255, 255, 255);
+  font-family: "Gilroy";
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 35px;
+  margin-bottom: 5px;
+}
+.newletter-container__group-form__input {
+  width: 700px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.newletter-container__group-form {
+  width: 1000px;
+  height: 270px;
+  display: flex;
+  flex-direction: column;
+}
+.newletter-container__group-form__button {
+  border-radius: 100px;
+  width: 175px;
+  height: 45px;
+  background: rgb(49, 157, 49);
+  color: rgb(255, 255, 255);
+  font-family: "Gilroy";
+  font-size: 24px;
+  font-weight: 300;
+  margin-top: auto;
+}
+.catalog-category {
+  margin: 20px;
+}
+/* .catalog-cards-wrapper div {
+  margin: 2px 20px 0px 20px;
+}
+.catalog-cards-wrapper div:first-child {
+  margin: 20px 20px 0px 20px;
+} */
+.newsletter-container__group-img__img {
+  border-radius: 40px;
+  width: 21vw;
+  height: 14vw;
+  margin-left: 20px;
+
+  padding-right: 30px;
+}
+@media screen and (max-width: 1300px) {
+  .welcome {
+    display: block;
+  }
+  .welcome-img {
+    width: 60%;
+  }
+  .text-container__welcom-info {
+    width: auto;
+  }
+}
+@media screen and (max-width: 1110px) {
+  .newsletter-container__group-img__img {
+    display: none;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .header-container__logo {
+    display: none;
+  }
+  .header-container__buttons__bas-us {
+    padding: 0px 7vw 0px 3vw;
+  }
+  .header-container__catalog {
+    width: 30px;
+    height: 30px;
+  }
+  .header-container__buttons__basket__text {
+    display: none;
+  }
+  .header-container {
+    margin-left: clamp(
+      15px,
+      calc((100vw - 320px) * 0.57 - 315px),
+      calc((100vw - 1024px) * 0.03 + 40px)
+    );
+    margin-right: clamp(
+      15px,
+      calc((100vw - 320px) * 0.57 - 315px),
+      calc((100vw - 1024px) * 0.03 + 40px)
+    );
+  }
+  .header-container__group {
+    width: 40px;
+    height: auto;
+    justify-content: center;
+    margin-right: 20px;
+  }
+  .header-container__catalog {
+    min-width: 40px;
+    min-height: 40px;
+    margin-right: 20px !important;
+  }
+  .header-container a {
+    display: none;
+  }
+  .header-container__search {
+    margin: 0px;
+    width: 40vw;
+  }
+  .newletter-container__group-form__input {
+    display: block;
+  }
+  .newletter-container__group-form__button {
+    margin-top: 25px;
+    min-height: 45px;
+  }
+  .newletter-container__group-form__input__mail__title {
+    font-size: clamp(20px, 3vw, 26px);
+  }
+  .newsletter {
+    height: 400px;
+  }
+}
